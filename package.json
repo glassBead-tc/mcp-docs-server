@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glassBead/mcp-docs-server.git"
+    "url": "git+https://github.com/glassBead-tc/mcp-docs-server.git"
   },
   "files": [
     "build",
@@ -29,9 +29,9 @@
   ],
   "author": "glassBead",
   "license": "MIT",
-  "homepage": "https://github.com/glassBead/mcp-docs-server#readme",
+  "homepage": "https://github.com/glassBead-tc/mcp-docs-server#readme",
   "bugs": {
-    "url": "https://github.com/glassBead/mcp-docs-server/issues"
+    "url": "https://github.com/glassBead-tc/mcp-docs-server/issues"
   },
   "scripts": {
     "build": "tsc",
