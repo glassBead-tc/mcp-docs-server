@@ -1,0 +1,65 @@
+{
+  "name": "mcp-docs-server",
+  "version": "1.0.0",
+  "description": "Model Context Protocol Documentation Server - Provides comprehensive MCP documentation and guides through an MCP interface",
+  "type": "module",
+  "main": "./build/index.js",
+  "module": "./src/index.ts",
+  "bin": {
+    "mcp-docs-server": "./build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glassBead/mcp-docs-server.git"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "mcp",
+    "model context protocol",
+    "documentation",
+    "guide",
+    "reference",
+    "claude",
+    "ai",
+    "development"
+  ],
+  "author": "glassBead",
+  "license": "MIT",
+  "homepage": "https://github.com/glassBead/mcp-docs-server#readme",
+  "bugs": {
+    "url": "https://github.com/glassBead/mcp-docs-server/issues"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "dev": "tsx src/index.ts",
+    "start": "node build/index.js",
+    "prepublishOnly": "npm run build",
+    "test": "node test-server.js",
+    "test:watch": "echo 'Tests not implemented yet'",
+    "test:coverage": "echo 'Tests not implemented yet'",
+    "build:full": "./scripts/build.sh",
+    "deploy:local": "./scripts/deploy.sh local",
+    "deploy:docker": "./scripts/deploy.sh docker",
+    "deploy:npm": "./scripts/deploy.sh npm",
+    "install:claude": "./scripts/install.sh",
+    "inspect": "npx @modelcontextprotocol/inspector node build/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
