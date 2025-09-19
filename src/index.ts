@@ -19,6 +19,28 @@ import { searchDocs } from "./tools/searchDocs.js";
 import { getDocsByCategory } from "./tools/getDocsByCategory.js";
 import { prompts } from "./prompts/index.js";
 import { resources } from "./resources/index.js";
+import { moduleFileFromUrl, pathsAreEqual } from "./utils/modulePaths.js";
+
+function getImportMetaUrl(): string | undefined {
+  try {
+    return (import.meta as ImportMeta).url;
+  } catch (error) {
+    return undefined;
+  }
+}
+
+const moduleMetaUrl = getImportMetaUrl();
+
+function isExecutedDirectly(metaUrl?: string): boolean {
+  if (typeof module !== "undefined" && module?.parent === null) {
+    return true;
+  }
+
+  const moduleFile = moduleFileFromUrl(metaUrl);
+  const entryFile = Array.isArray(process.argv) ? process.argv[1] : undefined;
+
+  return pathsAreEqual(moduleFile, entryFile);
+}
 
 const server = new Server(
   {
@@ -224,7 +246,7 @@ async function main() {
   console.error("MCP Docs Server running on stdio");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (isExecutedDirectly(moduleMetaUrl)) {
   main().catch((error) => {
     console.error("Server failed:", error);
     process.exit(1);
