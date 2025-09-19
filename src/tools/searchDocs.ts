@@ -1,10 +1,19 @@
 import { z } from "zod";
 import { readFileSync, readdirSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { join } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { docsDirFrom, moduleDirFromUrl } from "../utils/modulePaths.js";
+
+function getImportMetaUrl(): string | undefined {
+  try {
+    return (import.meta as ImportMeta).url;
+  } catch (error) {
+    return undefined;
+  }
+}
+
+const moduleDir = moduleDirFromUrl(getImportMetaUrl());
+const docsDirectory = docsDirFrom(moduleDir);
 
 const inputSchema = z.object({
   query: z.string().describe("Search query - keywords, phrases, or specific concepts to find in the documentation"),
@@ -139,7 +148,7 @@ export const searchDocs = {
     
     try {
       // Get path to scraped_docs directory
-      const docsPath = join(__dirname, "../../scraped_docs");
+      const docsPath = docsDirectory;
       
       // Read all markdown files
       const files = readdirSync(docsPath).filter(file => file.endsWith('.md'));
