@@ -14,6 +14,7 @@
   },
   "files": [
     "build",
+    "scraped_docs",
     "README.md",
     "LICENSE"
   ],

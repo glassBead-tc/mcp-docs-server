@@ -139,7 +139,7 @@ export const searchDocs = {
     
     try {
       // Get path to scraped_docs directory
-      const docsPath = join(__dirname, "../../../scraped_docs");
+      const docsPath = join(__dirname, "../../scraped_docs");
       
       // Read all markdown files
       const files = readdirSync(docsPath).filter(file => file.endsWith('.md'));

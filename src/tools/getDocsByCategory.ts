@@ -102,7 +102,7 @@ export const getDocsByCategory = {
     const { category } = args;
     
     try {
-      const docsPath = join(__dirname, "../../../scraped_docs");
+      const docsPath = join(__dirname, "../../scraped_docs");
       const files = readdirSync(docsPath).filter(file => file.endsWith('.md'));
       
       if (category === "overview") {

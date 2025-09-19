@@ -77,7 +77,7 @@ function getPriority(category: string): number {
 export const resources = {
   list(): Resource[] {
     try {
-      const docsPath = join(__dirname, "../../../scraped_docs");
+      const docsPath = join(__dirname, "../../scraped_docs");
       const files = readdirSync(docsPath).filter(file => file.endsWith('.md'));
       
       const resourceList: Resource[] = [];
@@ -133,7 +133,7 @@ export const resources = {
         throw new Error(`Invalid filename: ${filename}`);
       }
       
-      const docsPath = join(__dirname, "../../../scraped_docs");
+      const docsPath = join(__dirname, "../../scraped_docs");
       const filePath = join(docsPath, filename);
       
       // Check if file exists
